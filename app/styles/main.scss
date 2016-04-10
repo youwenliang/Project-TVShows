@@ -1,0 +1,558 @@
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+// bower:scss
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+// endbower
+
+// Image Cards
+.demo-card-image.mdl-card {
+  width: 256px;
+  height: 355px;
+  margin: 0 10px;
+  overflow: hidden;
+  background-color: #1A1A1A;
+}
+.demo-card-image-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  // background: #1A1A1A url('../images/lowpolytruck.jpg') center / cover;
+  transition: transform .3s ease-in-out, opacity .3s ease-in-out;
+  -webkit-transition: transform .3s ease-in-out, opacity .3s ease-in-out;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+
+.demo-card-image > .mdl-card__actions {
+  height: 125px;
+  padding: 20px;
+  border-top: solid 4px #fff;
+  background: #333333;
+  z-index: 1;
+}
+
+.demo-card-image p {
+  line-height: 1.2;
+}
+
+.demo-card-image hr{
+  width: 10%;
+  margin: auto;
+  border: solid 2px #fff;
+  margin-bottom: 15px;
+}
+.demo-card-image__date {
+  position: absolute;
+  top: 30px;
+  left: 0px;
+  right: 0px;
+  color: #fff;
+  font-size: 13pt;
+  opacity: .8;
+  font-weight: 700;
+  text-align: center;
+  // text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.demo-card-image__showname {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.demo-card-image__episode {
+  color: #fff;
+  font-size: 10px;
+  font-weight: 500;
+  text-align: center;
+  opacity: .6;
+  letter-spacing: .6px;
+}
+
+.demo-card-image__episodename {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 100;
+  text-align: center;
+  letter-spacing: .8px;
+}
+
+.noshow {
+  background-color: #333 !important;
+}
+
+.noshow hr {
+  margin-top: 10px !important;
+}
+
+.demo-card-image__opps {
+  margin-top: 65%;
+  color: #fff;
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+}
+
+.demo-card-image__noshow {
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: 1px;
+  opacity: .6;
+}
+
+
+// Clock
+.clock {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+}
+
+.time {
+  font-size: 28pt;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 2px;
+  text-align: right;
+}
+
+.ampm {
+  font-size: 14pt;
+  font-weight: 700;
+  color: #fff;
+  margin-left: -10px;
+  text-align: right;
+}
+
+.date {
+  font-size: 10pt;
+  font-weight: 500;
+  color: #fff;
+  opacity: .7;
+  letter-spacing: .6px;
+  text-align: right;
+  margin-top: -10px;
+}
+
+// Swiper
+.swiper-container {
+    width: 100%;
+    height: 600px;
+    margin: 100px auto;
+}
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    // background: #fff;
+    width: auto;
+    padding: 0 20px;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    opacity: .5;
+    transition: transform .2s ease-in-out, opacity .2s ease-in-out;
+    -webkit-transition: transform .2s ease-in-out, opacity .2s ease-in-out;
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+}
+.swiper-slide-active {
+  transform: scale(1.1);
+  opacity: 1;
+  transition: transform .2s ease-in-out, opacity .2s ease-in-out;
+  -webkit-transition: transform .2s ease-in-out, opacity .2s ease-in-out;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+.swiper-slide-active .demo-card-image__date {
+  font-size: 16pt;
+  opacity: 1;
+}
+.swiper-slide-active .demo-card-image__date::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: inline-block;
+  height: 20px;
+  width: 80px;
+  border-bottom: 3px solid;
+  margin-top: 25px;
+}
+
+.swiper-button-prev {
+  left: 20px;
+}
+.swiper-button-next {
+  right: 20px;
+}
+
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+#video {
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+.face {
+  position: absolute;
+  top: 70px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  font-size: 60pt !important;
+  font-weight: 100;
+  color: #fff;
+  z-index: 10;
+  opacity: .2;
+}
+
+.play {
+  position: absolute;
+  top: 90px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  font-size: 40pt !important;
+  color: #fff;
+  z-index: 10;
+  opacity: 0;
+  transition: transform .3s ease-in-out, opacity .3s ease-in-out;
+  -webkit-transition: transform .3s ease-in-out, opacity .3s ease-in-out;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+.swiper-slide-active .mdl-card__title:hover > .play{
+  opacity: 1;
+  transition: transform .3s ease-in-out, opacity .3s ease-in-out;
+  -webkit-transition: transform .3s ease-in-out, opacity .3s ease-in-out;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+
+.swiper-slide-active .mdl-card__title:hover > .demo-card-image-background{
+  opacity: .5;
+  transform: scale(1.1);
+  transition: transform .3s ease-in-out, opacity .3s ease-in-out;
+  -webkit-transition: transform .3s ease-in-out, opacity .3s ease-in-out;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+
+
+.swiper-slide-active .mdl-card__title {
+  cursor: pointer; cursor: hand;
+}
+
+
+.exit {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #fff;
+  z-index: 20;
+  cursor: pointer; cursor: hand;
+  opacity: 1;
+  transition: transform .2s ease-in-out, opacity .2s ease-in-out;
+  -webkit-transition: transform .2s ease-in-out, opacity .2s ease-in-out;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+
+.exit:hover {
+  opacity: .5;
+  transition: transform .2s ease-in-out, opacity .2s ease-in-out;
+  -webkit-transition: transform .2s ease-in-out, opacity .2s ease-in-out;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+
+.black {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background: #1A1A1A;
+  opacity: .8;
+  z-index: 10;
+}
+
+/* Space out content a bit */
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #1A1A1A;
+  overflow: hidden;
+  font-family: 'apercu';
+  opacity: 0;
+  transition: opacity .2s ease-in-out;
+  -webkit-transition: opacity .2s ease-in-out;
+}
+
+.swiper-container{
+
+}
+
+#background {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #1A1A1A url('../images/backdrop.jpg') center / cover;
+  opacity: .1;
+  display: block;
+  filter: blur(5px);
+  -webkit-filter: blur(5px);
+  -webkit-transition: background-image 0.2s ease-in-out;
+  transition: background-image 0.2s ease-in-out;
+}
+
+#outerdiv{
+  width: 620px;
+  height: 545px;
+  overflow: hidden;
+  position:absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 20;
+}
+
+#innerdiv{
+  position:absolute;
+  top:-489px;
+  left:-333px;
+  width:1280px;
+  height:1200px;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+
+  /* Make the masthead heading the same height as the navigation */
+  h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 40px;
+    padding-bottom: 19px;
+  }
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+  .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+  }
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+  p + h4 {
+    margin-top: 28px;
+  }
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: calc(100%-170px);
+  }
+
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+
+/* Generated by Font Squirrel (http://www.fontsquirrel.com) on January 16, 2016 */
+
+@font-face {
+    font-family: 'apercu';
+    src: url('fonts/apercu_bold_italic-webfont.eot');
+    src: url('fonts/apercu_bold_italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/apercu_bold_italic-webfont.woff2') format('woff2'),
+         url('fonts/apercu_bold_italic-webfont.woff') format('woff'),
+         url('fonts/apercu_bold_italic-webfont.ttf') format('truetype'),
+         url('fonts/apercu_bold_italic-webfont.svg#apercubold_italic') format('svg');
+    font-weight: 700;
+    font-style: italic;;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'apercu';
+    src: url('fonts/apercu_bold-webfont.eot');
+    src: url('fonts/apercu_bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/apercu_bold-webfont.woff2') format('woff2'),
+         url('fonts/apercu_bold-webfont.woff') format('woff'),
+         url('fonts/apercu_bold-webfont.ttf') format('truetype'),
+         url('fonts/apercu_bold-webfont.svg#apercubold') format('svg');
+    font-weight: 700;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'apercu';
+    src: url('fonts/apercu_light_italic-webfont.eot');
+    src: url('fonts/apercu_light_italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/apercu_light_italic-webfont.woff2') format('woff2'),
+         url('fonts/apercu_light_italic-webfont.woff') format('woff'),
+         url('fonts/apercu_light_italic-webfont.ttf') format('truetype'),
+         url('fonts/apercu_light_italic-webfont.svg#aperculight_italic') format('svg');
+    font-weight: 100;
+    font-style: italic;;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'apercu';
+    src: url('fonts/apercu_light-webfont.eot');
+    src: url('fonts/apercu_light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/apercu_light-webfont.woff2') format('woff2'),
+         url('fonts/apercu_light-webfont.woff') format('woff'),
+         url('fonts/apercu_light-webfont.ttf') format('truetype'),
+         url('fonts/apercu_light-webfont.svg#apercuregular') format('svg');
+    font-weight: 100;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'apercu';
+    src: url('fonts/apercu_medium_italic-webfont.eot');
+    src: url('fonts/apercu_medium_italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/apercu_medium_italic-webfont.woff2') format('woff2'),
+         url('fonts/apercu_medium_italic-webfont.woff') format('woff'),
+         url('fonts/apercu_medium_italic-webfont.ttf') format('truetype'),
+         url('fonts/apercu_medium_italic-webfont.svg#apercumedium_italic') format('svg');
+    font-weight: 500;
+    font-style: italic;;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'apercu';
+    src: url('fonts/apercu_medium-webfont.eot');
+    src: url('fonts/apercu_medium-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/apercu_medium-webfont.woff2') format('woff2'),
+         url('fonts/apercu_medium-webfont.woff') format('woff'),
+         url('fonts/apercu_medium-webfont.ttf') format('truetype'),
+         url('fonts/apercu_medium-webfont.svg#apercumedium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'apercu';
+    src: url('fonts/apercu_regular_italic-webfont.eot');
+    src: url('fonts/apercu_regular_italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/apercu_regular_italic-webfont.woff2') format('woff2'),
+         url('fonts/apercu_regular_italic-webfont.woff') format('woff'),
+         url('fonts/apercu_regular_italic-webfont.ttf') format('truetype'),
+         url('fonts/apercu_regular_italic-webfont.svg#apercuitalic') format('svg');
+    font-weight: normal;
+    font-style: italic;;
+
+}
+
+
+
+
+@font-face {
+    font-family: 'apercu';
+    src: url('fonts/apercu_regular-webfont.eot');
+    src: url('fonts/apercu_regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/apercu_regular-webfont.woff2') format('woff2'),
+         url('fonts/apercu_regular-webfont.woff') format('woff'),
+         url('fonts/apercu_regular-webfont.ttf') format('truetype'),
+         url('fonts/apercu_regular-webfont.svg#apercuregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
