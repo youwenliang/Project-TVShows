@@ -5191,7 +5191,13 @@ button.close {
   height: 355px;
   margin: 0 10px;
   overflow: hidden;
-  background-color: #1A1A1A; }
+  background-color: #1A1A1A;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000; }
 
 .demo-card-image-background {
   position: absolute;
@@ -5203,14 +5209,22 @@ button.close {
   transition: transform .3s ease-in-out, opacity .3s ease-in-out;
   -webkit-transition: -webkit-transform .3s ease-in-out, opacity .3s ease-in-out;
   transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d; }
+  -webkit-transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; }
 
 .demo-card-image > .mdl-card__actions {
   height: 125px;
   padding: 20px;
   border-top: solid 4px #fff;
   background: #333333;
-  z-index: 1; }
+  z-index: 1;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000; }
 
 .demo-card-image p {
   line-height: 1.2; }
@@ -5239,7 +5253,11 @@ button.close {
   font-weight: 700;
   text-align: center;
   text-transform: uppercase;
-  letter-spacing: 3px; }
+  letter-spacing: 3px;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; }
 
 .demo-card-image__episode {
   color: #fff;
@@ -5247,14 +5265,22 @@ button.close {
   font-weight: 500;
   text-align: center;
   opacity: .6;
-  letter-spacing: .6px; }
+  letter-spacing: .6px;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; }
 
 .demo-card-image__episodename {
   color: #fff;
   font-size: 12px;
   font-weight: 100;
   text-align: center;
-  letter-spacing: .8px; }
+  letter-spacing: .8px;
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; }
 
 .noshow {
   background-color: #333 !important; }
@@ -5328,16 +5354,25 @@ button.close {
   transition: transform .2s ease-in-out, opacity .2s ease-in-out;
   -webkit-transition: -webkit-transform .2s ease-in-out, opacity .2s ease-in-out;
   transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d; }
+  -webkit-transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000; }
 
 .swiper-slide-active {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+  -webkit-transform: scale(1.1) translate3d(0, 0, 0);
+          transform: scale(1.1) translate3d(0, 0, 0);
   opacity: 1;
   transition: transform .2s ease-in-out, opacity .2s ease-in-out;
   -webkit-transition: -webkit-transform .2s ease-in-out, opacity .2s ease-in-out;
   transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d; }
+  -webkit-transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform;
+  -webkit-perspective: 1000;
+  perspective: 1000; }
 
 .swiper-slide-active .demo-card-image__date {
   font-size: 16pt;
@@ -5397,23 +5432,29 @@ button.close {
   transition: transform .3s ease-in-out, opacity .3s ease-in-out;
   -webkit-transition: -webkit-transform .3s ease-in-out, opacity .3s ease-in-out;
   transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d; }
+  -webkit-transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; }
 
 .swiper-slide-active .mdl-card__title:hover > .play {
   opacity: 1;
   transition: transform .3s ease-in-out, opacity .3s ease-in-out;
   -webkit-transition: -webkit-transform .3s ease-in-out, opacity .3s ease-in-out;
   transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d; }
+  -webkit-transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; }
 
 .swiper-slide-active .mdl-card__title:hover > .demo-card-image-background {
   opacity: .5;
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+  -webkit-transform: scale(1.1) translate3d(0, 0, 0);
+          transform: scale(1.1) translate3d(0, 0, 0);
   transition: transform .3s ease-in-out, opacity .3s ease-in-out;
   -webkit-transition: -webkit-transform .3s ease-in-out, opacity .3s ease-in-out;
   transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d; }
+  -webkit-transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; }
 
 .swiper-slide-active .mdl-card__title {
   cursor: pointer;
@@ -5431,14 +5472,18 @@ button.close {
   transition: transform .2s ease-in-out, opacity .2s ease-in-out;
   -webkit-transition: -webkit-transform .2s ease-in-out, opacity .2s ease-in-out;
   transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d; }
+  -webkit-transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; }
 
 .exit:hover {
   opacity: .5;
   transition: transform .2s ease-in-out, opacity .2s ease-in-out;
   -webkit-transition: -webkit-transform .2s ease-in-out, opacity .2s ease-in-out;
   transform-style: preserve-3d;
-  -webkit-transform-style: preserve-3d; }
+  -webkit-transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden; }
 
 .black {
   position: absolute;
@@ -5458,7 +5503,9 @@ body {
   font-family: 'apercu';
   opacity: 0;
   transition: opacity .2s ease-in-out;
-  -webkit-transition: opacity .2s ease-in-out; }
+  -webkit-transition: opacity .2s ease-in-out;
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased; }
 
 #background {
   position: absolute;

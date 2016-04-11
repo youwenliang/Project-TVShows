@@ -10,6 +10,12 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   margin: 0 10px;
   overflow: hidden;
   background-color: #1A1A1A;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000;
 }
 .demo-card-image-background {
   position: absolute;
@@ -23,6 +29,9 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   -webkit-transition: transform .3s ease-in-out, opacity .3s ease-in-out;
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  
 }
 
 .demo-card-image > .mdl-card__actions {
@@ -31,6 +40,12 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   border-top: solid 4px #fff;
   background: #333333;
   z-index: 1;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000;
 }
 
 .demo-card-image p {
@@ -64,6 +79,9 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 3px;
+  transform: translate3d(0,0,0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .demo-card-image__episode {
@@ -73,6 +91,9 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   text-align: center;
   opacity: .6;
   letter-spacing: .6px;
+  transform: translate3d(0,0,0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .demo-card-image__episodename {
@@ -81,6 +102,9 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   font-weight: 100;
   text-align: center;
   letter-spacing: .8px;
+  transform: translate3d(0,0,0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 .noshow {
@@ -174,15 +198,25 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
     -webkit-transition: transform .2s ease-in-out, opacity .2s ease-in-out;
     transform-style: preserve-3d;
     -webkit-transform-style: preserve-3d;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    perspective: 1000;
 }
 .swiper-slide-active {
-  transform: scale(1.1);
+  transform: scale(1.1) translate3d(0,0,0);
   opacity: 1;
   transition: transform .2s ease-in-out, opacity .2s ease-in-out;
   -webkit-transition: transform .2s ease-in-out, opacity .2s ease-in-out;
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform;
+  -webkit-perspective: 1000;
+  perspective: 1000;
 }
+
 .swiper-slide-active .demo-card-image__date {
   font-size: 16pt;
   opacity: 1;
@@ -246,6 +280,9 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   -webkit-transition: transform .3s ease-in-out, opacity .3s ease-in-out;
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
+backface-visibility: hidden;
+-webkit-backface-visibility: hidden;
+  
 }
 .swiper-slide-active .mdl-card__title:hover > .play{
   opacity: 1;
@@ -253,15 +290,21 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   -webkit-transition: transform .3s ease-in-out, opacity .3s ease-in-out;
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  
 }
 
 .swiper-slide-active .mdl-card__title:hover > .demo-card-image-background{
   opacity: .5;
-  transform: scale(1.1);
+  transform: scale(1.1) translate3d(0,0,0);
   transition: transform .3s ease-in-out, opacity .3s ease-in-out;
   -webkit-transition: transform .3s ease-in-out, opacity .3s ease-in-out;
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
+backface-visibility: hidden;
+-webkit-backface-visibility: hidden;
+  
 }
 
 
@@ -282,6 +325,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   -webkit-transition: transform .2s ease-in-out, opacity .2s ease-in-out;
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
+backface-visibility: hidden;
+-webkit-backface-visibility: hidden;  
 }
 
 .exit:hover {
@@ -290,6 +335,9 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   -webkit-transition: transform .2s ease-in-out, opacity .2s ease-in-out;
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
+backface-visibility: hidden;
+-webkit-backface-visibility: hidden;
+  
 }
 
 .black {
@@ -312,6 +360,8 @@ body {
   opacity: 0;
   transition: opacity .2s ease-in-out;
   -webkit-transition: opacity .2s ease-in-out;
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased; 
 }
 
 .swiper-container{
