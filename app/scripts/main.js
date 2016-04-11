@@ -87,16 +87,16 @@ $(document).ready(function(){
               var showdate = values[k]["title"].split(', ')[1].split(' ')[1] + " " + values[k]["title"].split(', ')[1].split(' ')[0];
               showslist[k][0] = showdate;
 
-              var shows_nm = values[k]["contentSnippet"].split(/\([0-9]x[0-9]{1,}\)/g);
-              var shows_ep = values[k]["contentSnippet"].match(/\([0-9]x[0-9]{1,}\)/g);
+              var shows_nm = values[k]["content"].split(/\([0-9]x[0-9]{1,}\)/g);
+              var shows_ep = values[k]["content"].match(/\([0-9]x[0-9]{1,}\)/g);
               done = false;
 
               for(var i = 0; i < shows_nm.length-1; i++){
                 shows_nm[i];
                 shows_ep[i].slice(1,-1);
 
-                var showname = shows_nm[i].split(' - ')[0];
-                var title = shows_nm[i].split(' - ')[1].trim();
+                var showname = shows_nm[i].split('<strong>')[1].split(' - ')[0];
+                var title = shows_nm[i].split('<strong>')[1].split(' - ')[1].trim().replace('</strong>','');
                 var season = shows_ep[i].slice(1,-1).split('x')[0];
                 var episode = shows_ep[i].slice(1,-1).split('x')[1];
                 if(showname.length > 16) {
