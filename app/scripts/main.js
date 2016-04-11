@@ -149,6 +149,11 @@ $(document).ready(function(){
               console.log(currentid);
               if(currentid == null) $('#background').css('background',"#1A1A1A url('../images/backdrop.jpg') center / cover");
               else $('#background').css('background',backdropImg[currentid]);
+
+              $('.swiper-slide-active .mdl-card__title').hover(function(){
+                var hoverid = $(this).parent().attr('data-id');
+                $('#background').css('background',backdropImg[hoverid]);                
+              });
             });
 
             $('.play').click(function(){
