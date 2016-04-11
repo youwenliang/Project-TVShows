@@ -34,7 +34,13 @@ var swiper;
 
 //https://api.themoviedb.org/3/movie/550?api_key=49034eafe4dfea62ac075ba815f5bf18
 
+
+$(window).unload(function() {
+    window.location.reload(true);
+});
+
 $(document).ready(function(){
+
   for (var i=0;i<7;i++) {
        showslist[i] = [];
        showslist[i][1] = [];
@@ -52,17 +58,18 @@ $(document).ready(function(){
         backdropImg[showid] = '#1A1A1A url(https://image.tmdb.org/t/p/w780'+ data.backdrop_path + ') center / cover';
 
         //Get Poster_Path
-        $('#slide'+k+' .demo-card-image-background').css('background','#1A1A1A url(https://image.tmdb.org/t/p/w780'+ data.poster_path + ') 0px 0px / cover');
+        $('#slide'+k+' .demo-card-image[data-id='+showid+'] .demo-card-image-background').css('background','#1A1A1A url(https://image.tmdb.org/t/p/w780'+ data.poster_path + ') 0px 0px / cover');
 
         //Set Colors
-        $('#slide'+k+' .mdl-card__title').css('background-color',colors[showid]);
-        $('#slide'+k+' .demo-card-image hr').css('border','solid 2px '+colors[showid]);
-        $('#slide'+k+' .demo-card-image > .mdl-card__actions').css('border-top','solid 4px '+colors[showid]);
-        $('#slide'+k+' .demo-card-image').attr('data-id', showid);
+        $('#slide'+k+' .demo-card-image[data-id='+showid+'] .mdl-card__title').css('background-color',colors[showid]);
+        $('#slide'+k+' .demo-card-image[data-id='+showid+'] hr').css('border','solid 2px '+colors[showid]);
+        $('#slide'+k+' .demo-card-image[data-id='+showid+'] > .mdl-card__actions').css('border-top','solid 4px '+colors[showid]);
+        // $('#slide'+k+' .demo-card-image').attr('data-id', showid);
       }
     };
     request.send();
   };
+
 
   $(function(){
       url = 'https://episodecalendar.com/rss_feed/big.head.cool@gmail.com';
@@ -75,7 +82,7 @@ $(document).ready(function(){
         },
         success: function(xml){
             values = xml.responseData.feed.entries;
-
+            console.log(values);
             for (var k = 0; k < 7; k++){
               var showdate = values[k]["title"].split(', ')[1].split(' ')[1] + " " + values[k]["title"].split(', ')[1].split(' ')[0];
               showslist[k][0] = showdate;
@@ -98,15 +105,15 @@ $(document).ready(function(){
                 }
                 else showslist[k][1][i] = [showname, title, season, episode];
 
-                for(var j = 0; j < 7; j++){
+                for(var j = 1; j < 8; j++){
                   var d = new Date();
                   d.setDate(d.getDate()-(7-j));
                   var newDate = updateDate(d).split(', ')[0].split('day ')[1].split(' ')[0] + " " + ('0' + updateDate(d).split(', ')[0].split('day ')[1].split(' ')[1]).slice(-2);
-
+                  console.log(newDate+'-'+showslist[k][0]);
                   if(newDate == showslist[k][0]) {
                     //Apply Card Info
                     $('#slide'+ j).append(
-                      '<div class="demo-card-image mdl-card mdl-shadow--2dp"><div class="mdl-card__title mdl-card--expand data-adaptive-background data-ab-css-background"><div class="demo-card-image-background"></div><i class="play material-icons">ondemand_video</i></div><div class="mdl-card__actions"><p class="demo-card-image__showname">'+showslist[k][1][i][0]+'</p><hr><p class="demo-card-image__episode">Season '+showslist[k][1][i][2]+' - Episode '+showslist[k][1][i][3]+'</p><p class="demo-card-image__episodename">"'+showslist[k][1][i][1]+'"</p></div></div>'
+                      '<div class="demo-card-image mdl-card mdl-shadow--2dp" data-id="'+id[showname]+'"><div class="mdl-card__title mdl-card--expand data-adaptive-background data-ab-css-background"><div class="demo-card-image-background"></div><i class="play material-icons">ondemand_video</i></div><div class="mdl-card__actions"><p class="demo-card-image__showname">'+showslist[k][1][i][0]+'</p><hr><p class="demo-card-image__episode">Season '+showslist[k][1][i][2]+' - Episode '+showslist[k][1][i][3]+'</p><p class="demo-card-image__episodename">"'+showslist[k][1][i][1]+'"</p></div></div>'
                     );
                     $('#slide'+ j + ' .demo-card-image').attr('data-episode', showslist[k][1][i][3]);
                     //Apply Images
@@ -115,6 +122,7 @@ $(document).ready(function(){
                 }
               }
             }
+            console.log(showslist);
             for(var j = 1; j < 8; j++){
               if($('#slide'+ j).find('.demo-card-image').length == 0) {
                 $('#slide'+ j).append(
