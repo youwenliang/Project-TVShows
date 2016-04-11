@@ -39,12 +39,17 @@ $(window).unload(function() {
     window.location.reload(true);
 });
 
+var iframeInit = false;
 $(document).ready(function(){
-
+  $('.swiper-slide').addClass('init');
   for (var i=0;i<7;i++) {
        showslist[i] = [];
        showslist[i][1] = [];
   }
+  $('iframe').load(function() {
+    $(this).css('opacity',1);
+    $('.loading').hide();
+  });
 
   function set_posterImage(showid, k) {
     var request = new XMLHttpRequest();
@@ -140,29 +145,48 @@ $(document).ready(function(){
                   nextButton: '.swiper-button-next',
                   prevButton: '.swiper-button-prev',
                   onInit: function(){
-                    $('body').css('opacity',1)
+                    $('body').css('opacity',1);
+                    $('.swiper-slide').each( function(k, v) {
+                        var el = this;
+                        k++;
+                        setTimeout(function () {
+                            $(el).removeClass('init');
+                        }, k*150);
+                    });
                   }
             });
-
+            swiper.on('slideChangeStart', function () {
+                $('.swiper-slide-next .face').css('transform','rotate(0deg)');
+                $('.swiper-slide-prev .face').css('transform','rotate(0deg)');
+            });
             swiper.on('slideChangeEnd', function () {
               var currentid = $('#slide'+(swiper.activeIndex+1)+' .demo-card-image').attr('data-id');
               console.log(currentid);
-              if(currentid == null) $('#background').css('background',"#1A1A1A url('../images/backdrop.jpg') center / cover");
+              if(currentid == null) {
+                $('#background').css('background',"#1A1A1A url('../images/backdrop.jpg') center / cover");
+                $('#slide'+(swiper.activeIndex+1)+' .face').css('transform','rotate(30deg)');
+              }
               else $('#background').css('background',backdropImg[currentid]);
 
-              $('.swiper-slide-active .mdl-card__title').hover(function(){
-                var hoverid = $(this).parent().attr('data-id');
-                $('#background').css('background',backdropImg[hoverid]);                
+              $('.mdl-card__title').hover(function(){
+                if($(this).parent().parent().hasClass('swiper-slide-active')) {
+                  var hoverid = $(this).parent().attr('data-id');
+                  $('#background').css('background',backdropImg[hoverid]);
+                }
               });
             });
 
             $('.play').click(function(){
-              var i = links[$(this).parent().parent().attr('data-id')][0];
-              var e = parseInt($(this).parent().parent().attr('data-episode'))+parseInt(links[$(this).parent().parent().attr('data-id')][1]);
-              console.log(i+" "+e);
-              $('#video').show();
-              var showurl = "http://www.123kubo.com/vod-play-id-"+i+"-pid-"+e+".html";
-              $('#innerdiv').attr('src',showurl);
+              if($(this).parent().parent().parent().hasClass('swiper-slide-active')) {
+                $('.loading').show();
+                $('iframe').css('opacity',0);
+                var i = links[$(this).parent().parent().attr('data-id')][0];
+                var e = parseInt($(this).parent().parent().attr('data-episode'))+parseInt(links[$(this).parent().parent().attr('data-id')][1]);
+                console.log(i+" "+e);
+                $('#video').show();
+                var showurl = "http://www.123kubo.com/vod-play-id-"+i+"-pid-"+e+".html";
+                $('#innerdiv').attr('src',showurl);
+              }
             });
             $('.exit').click(function(){
               $('#video').hide();
