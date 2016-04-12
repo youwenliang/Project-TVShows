@@ -63,6 +63,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   border-radius: 3px;
   background-color: #ffcd40;
   font-size: .6em;
+  pointer-events: none;
 }
 
 .demo-card-image > .mdl-card__actions {

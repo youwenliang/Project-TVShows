@@ -170,14 +170,23 @@ $(document).ready(function(){
                         }, k*220);
                     });
                     setTimeout(function () {
+                      var currentid = $('#slide'+(swiper.activeIndex+1)+' .demo-card-image').attr('data-id');
+                      console.log(currentid);
+                      if(currentid == null) {
+                        $('#background').css('background',"#1A1A1A url('../images/backdrop.jpg') center / cover");
+                        $('#slide'+(swiper.activeIndex+1)+' .face').css('transform','rotate(30deg)');
+                      }
+                      else $('#background').css('background',backdropImg[currentid]);
                         $('.swiper-button-prev, .swiper-button-next, .swiper-pagination-bullet').css({'opacity':1,'transform':'translate3d(0,-10px,0)'});
                     }, 9*220);
                   }
             });
+
             swiper.on('slideChangeStart', function () {
                 $('.swiper-slide-next .face').css('transform','rotate(0deg)');
                 $('.swiper-slide-prev .face').css('transform','rotate(0deg)');
             });
+
             swiper.on('slideChangeEnd', function () {
               var currentid = $('#slide'+(swiper.activeIndex+1)+' .demo-card-image').attr('data-id');
               console.log(currentid);

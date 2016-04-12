@@ -4571,7 +4571,8 @@ button.close {
   font-weight: 700;
   border-radius: 3px;
   background-color: #ffcd40;
-  font-size: 0.6em; }
+  font-size: 0.6em;
+  pointer-events: none; }
 
 .demo-card-image > .mdl-card__actions {
   height: 135px;
