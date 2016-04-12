@@ -16,6 +16,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   -webkit-backface-visibility: hidden;
   -webkit-perspective: 1000;
   perspective: 1000;
+  margin-top: 30px;
 }
 .demo-card-image-background {
   position: absolute;
@@ -33,18 +34,35 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   -webkit-backface-visibility: hidden;
 
 }
+.swiper-pagination-bullet {
+        width: 10px;
+        height: 10px;
+        text-align: center;
+        line-height: 20px;
+        color:#000;
+        opacity: 0;
+        background: rgba(255,255,255,0.2);
+        margin: 10px !important;
+        transition: opacity .25s ease-in-out, transform .25s ease-in-out;
+        -webkit-transition: opacity .25s ease-in-out, transform .25s ease-in-out;
+    }
+    .swiper-pagination-bullet-active {
+        color:#fff;
+        background: #ffcd40;
+    }
 
 .updated {
   display: block;
   position: absolute;
   top: 10px;
   right: 10px;
-  width: 50px;
-  height: 31px;
-  padding-top: 5px;
+  width: 30px;
+  height: 18px;
+  padding-top: 3px;
   font-weight: 700;
-  border-radius: 6px;
+  border-radius: 3px;
   background-color: #ffcd40;
+  font-size: .6em;
 }
 
 .demo-card-image > .mdl-card__actions {
@@ -243,7 +261,7 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   font-size: 16pt;
   opacity: 1;
 }
-.swiper-slide-active .demo-card-image__date::after {
+.swiper-slide .demo-card-image__date::after {
   content: '';
   position: absolute;
   left: 0;
@@ -251,16 +269,28 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   margin: auto;
   display: inline-block;
   height: 20px;
-  width: 80px;
-  border-bottom: 3px solid;
+  width: 60px;
+  transform: scale3d(0,1,1);
+  border-bottom: 4px solid #ffcd40;
   margin-top: 25px;
+  transition: transform .3s ease-in-out;
+  -webkit-transition: transform .3s ease-in-out;
+}
+.swiper-slide-active .demo-card-image__date::after {
+  transform: scale3d(1,1,1);
 }
 
 .swiper-button-prev {
   left: 20px;
+  opacity: 0;
+  transition: opacity .25s ease-in-out, transform .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out, transform .25s ease-in-out;
 }
 .swiper-button-next {
   right: 20px;
+  opacity: 0;
+  transition: opacity .25s ease-in-out, transform .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out, transform .25s ease-in-out;
 }
 
 .browsehappy {
@@ -270,11 +300,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
   padding: 0.2em 0;
 }
 
-#video {
-  width: 100%;
-  height: 100%;
-  display: none;
-}
+
+
 .face {
   position: absolute;
   top: 70px;
@@ -354,8 +381,8 @@ iframe {
 
 .exit {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: calc(50% - 295px);
+  left: calc(50% + 313px);
   color: #fff;
   z-index: 20;
   cursor: pointer; cursor: hand;
@@ -379,15 +406,6 @@ backface-visibility: hidden;
 
 }
 
-.black {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  background: #1A1A1A;
-  opacity: .8;
-  z-index: 10;
-}
 
 /* Space out content a bit */
 body {
@@ -436,7 +454,40 @@ body {
   height: 64px;
   background: url('../images/loading.gif') no-repeat;
 }
+#video {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
+  position: absolute;
+  top:0;
+  left:0;
+}
 
+#video.show {
+  opacity: 1;
+  transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
+}
+
+.black {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background: #131313;
+  opacity: 0;
+  z-index: 10;
+  transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
+}
+
+.show .black {
+  opacity: .8;
+  transition: opacity .25s ease-in-out;
+  -webkit-transition: opacity .25s ease-in-out;
+}
 #outerdiv{
   width: 620px;
   height: 545px;
@@ -449,6 +500,14 @@ body {
   margin: auto;
   z-index: 20;
   background-color: #000;
+  transform: scale(0);
+  transition: transform .25s ease-in-out;
+  -webkit-transition: transform .25s ease-in-out;
+}
+.show #outerdiv{
+  transform: scale(1);
+  transition: transform .25s ease-in-out;
+  -webkit-transition: transform .25s ease-in-out;
 }
 
 #innerdiv{

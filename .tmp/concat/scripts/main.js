@@ -74,7 +74,7 @@ $(document).ready(function(){
 
         var exurl = "http://www.tw116.com/occident/"+links[showid][2]+"/";
         var yql_url = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D%22" + encodeURIComponent(exurl) + "%22%20and%0A%20%20%20%20%20%20xpath%3D'%2F%2Fdiv'&format=json&callback=?";
-        
+
         $.getJSON(yql_url, function(json) {
           if (json && json.query && json.query.results) {
             //Get Episode Number
@@ -167,8 +167,11 @@ $(document).ready(function(){
                         k++;
                         setTimeout(function () {
                             $(el).removeClass('init');
-                        }, k*150);
+                        }, k*220);
                     });
+                    setTimeout(function () {
+                        $('.swiper-button-prev, .swiper-button-next, .swiper-pagination-bullet').css({'opacity':1,'transform':'translate3d(0,-10px,0)'});
+                    }, 9*220);
                   }
             });
             swiper.on('slideChangeStart', function () {
@@ -192,21 +195,23 @@ $(document).ready(function(){
               });
             });
 
-            $('.play').click(function(){
+            $('.play, .demo-card-image-background').click(function(){
               if($(this).parent().parent().parent().hasClass('swiper-slide-active')) {
                 $('.loading').show();
-                $('iframe').css('opacity',0);
                 var i = links[$(this).parent().parent().attr('data-id')][0];
                 var e = parseInt($(this).parent().parent().attr('data-episode'))+parseInt(links[$(this).parent().parent().attr('data-id')][1]);
                 console.log(i+" "+e);
-                $('#video').show();
+                $('#video').addClass('show').css('z-index',30);
                 var showurl = "http://www.123kubo.com/vod-play-id-"+i+"-pid-"+e+".html";
                 $('#innerdiv').attr('src',showurl);
               }
             });
-            $('.exit').click(function(){
-              $('#video').hide();
+            $('.exit, .black').click(function(){
+              $('#video').removeClass('show');
               $('#innerdiv').attr('src',"");
+              setTimeout(function(){
+                $('#video').css('z-index', -1);
+              }, 400);
             });
         }
     });
