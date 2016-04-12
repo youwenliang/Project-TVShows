@@ -21,13 +21,13 @@ var colors = {
   39351:"#3B526B"
 }
 var links = {
-  62710:["76651-sid-2",0],
-  60708:["77288-sid-2",0],
-  63174:["76648-sid-2",1],
-  1403:["77592-sid-5",0],
-  60735:["77647-sid-2",1],
-  1412:["77783-sid-3",1],
-  39351:["78190-sid-3",0]
+  62710:["76651-sid-2",0, "mangdiandiyiji"],
+  60708:["77288-sid-2",0, "getandierji"],
+  63174:["76648-sid-2",1, "luxifadiyiji"],
+  1403:["77592-sid-5",0, "shendunjutegongdisanji"],
+  60735:["77647-sid-2",1, "shandianxiadierji"],
+  1412:["77783-sid-3",1, "lvjianxiadisiji"],
+  39351:["78190-sid-3",0, "gelindiwuji"]
 }
 var backdropImg = {};
 var swiper;
@@ -70,6 +70,21 @@ $(document).ready(function(){
         $('#slide'+k+' .demo-card-image[data-id='+showid+'] hr').css('border','solid 2px '+colors[showid]);
         $('#slide'+k+' .demo-card-image[data-id='+showid+'] > .mdl-card__actions').css('border-top','solid 4px '+colors[showid]);
         // $('#slide'+k+' .demo-card-image').attr('data-id', showid);
+
+
+        var exurl = "http://www.tw116.com/occident/"+links[showid][2]+"/";
+        var yql_url = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D%22" + encodeURIComponent(exurl) + "%22%20and%0A%20%20%20%20%20%20xpath%3D'%2F%2Fdiv'&format=json&callback=?";
+        
+        $.getJSON(yql_url, function(json) {
+          if (json && json.query && json.query.results) {
+            //Get Episode Number
+            var update = json.query.results.div[12].div[1].ul[0].li[1].font.content.match(/[0-9]{1,}/g)[0];
+            if($('#slide'+k+' .demo-card-image[data-id='+showid+']').attr('data-episode') == update) {
+              console.log(update+"----"+links[showid][2]);
+              $('#slide'+k+' .demo-card-image[data-id='+showid+']').append('<div class="updated">NEW</div>');
+            }
+          }
+        });
       }
     };
     request.send();
@@ -120,9 +135,10 @@ $(document).ready(function(){
                     $('#slide'+ j).append(
                       '<div class="demo-card-image mdl-card mdl-shadow--2dp" data-id="'+id[showname]+'"><div class="mdl-card__title mdl-card--expand data-adaptive-background data-ab-css-background"><div class="demo-card-image-background"></div><i class="play material-icons">ondemand_video</i></div><div class="mdl-card__actions"><p class="demo-card-image__showname">'+showslist[k][1][i][0]+'</p><hr><p class="demo-card-image__episode">Season '+showslist[k][1][i][2]+' - Episode '+showslist[k][1][i][3]+'</p><p class="demo-card-image__episodename">"'+showslist[k][1][i][1]+'"</p></div></div>'
                     );
-                    $('#slide'+ j + ' .demo-card-image').attr('data-episode', showslist[k][1][i][3]);
+                    $('#slide'+ j + ' .demo-card-image[data-id='+id[showname]+']').attr('data-episode', showslist[k][1][i][3]);
                     //Apply Images
                     set_posterImage(id[showname], j);
+                    //Check Updates
                   }
                 }
               }
